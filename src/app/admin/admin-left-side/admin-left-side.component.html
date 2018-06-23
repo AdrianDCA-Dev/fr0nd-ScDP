@@ -76,6 +76,22 @@
             </span>
         </a>
       </li>
+      <li class="treeview" *ngIf="aclService.can('admin_encargado')">
+        <a routerLink="admin-encargado-informes" >
+          <i class="fa fa-dashboard"></i> <span>VER INFORMES</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+      </li>
+      <li class="treeview" *ngIf="aclService.can('admin_encargado')">
+        <a routerLink="admin-cronograma-actividades" >
+          <i class="fa fa-dashboard"></i> <span>REGISTRAR NOTAS</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+      </li>
       <li class="treeview" *ngIf="aclService.can('admin_docente')">
         <a routerLink="admin-planilla-control-tutor" >
           <i class="fa fa-dashboard"></i> <span>CONTROL INFORME</span>

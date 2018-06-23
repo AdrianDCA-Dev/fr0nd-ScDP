@@ -39,6 +39,14 @@ export class AdminPlanillaControlComponent implements OnInit {
       language: {
         'url': '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json',
       },
+      rowCallback: function(row, data)
+      {
+        if (data[5] == '<b _ngcontent-c6="">REVICION</b>') {
+          $($(row).find('td')[5]).css('background-color', 'red');
+        } else {
+          $($(row).find('td')[5]).css('background-color', 'green');
+        }
+      },
     };
     this.planCont.getPlanCont(this.auth.getUser().id).subscribe(data => {
       this.data = data.control;

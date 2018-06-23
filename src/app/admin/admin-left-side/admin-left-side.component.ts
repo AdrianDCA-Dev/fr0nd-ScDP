@@ -12,7 +12,7 @@ import {PlanillaControlService} from '../../services/planilla-control/planilla-c
 export class AdminLeftSideComponent implements OnInit {
   data: any[];
   dataPlanTutor: any[];
-  constructor(private auth: AuthService, private tribunales: TribunalService,
+  constructor(public auth: AuthService, private tribunales: TribunalService,
               private tutor: PlanillaControlService, private aclService: AclService) { }
 
   ngOnInit() {

@@ -18,6 +18,7 @@ import {AdminPlanillaControlComponent} from '../admin-planilla-control/admin-pla
 import {AdminProyectosFinalesComponent} from '../admin-proyectos-finales/admin-proyectos-finales.component';
 import {AdminPlanillaControlTutorComponent} from '../admin-planilla-control-tutor/admin-planilla-control-tutor.component';
 import {AdminTribunalNotasComponent} from '../admin-tribunal-notas/admin-tribunal-notas.component';
+import {AdminEncargadoInformesComponent} from '../admin-encargado-informes/admin-encargado-informes.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {AdminTribunalNotasComponent} from '../admin-tribunal-notas/admin-tribuna
           { path: 'admin-proyectos-finales', component: AdminProyectosFinalesComponent},
           { path: 'admin-planilla-control-tutor', component: AdminPlanillaControlTutorComponent},
           { path: 'admin-tribunal-notas', component: AdminTribunalNotasComponent},
+          { path: 'admin-encargado-informes', component: AdminEncargadoInformesComponent},
         ]
       }
     ])

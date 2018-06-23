@@ -32,6 +32,14 @@ export class AdminCronogramaDefensaComponent implements OnInit {
       language: {
         'url': '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json',
       },
+      rowCallback: function(row, data)
+      {
+        if (data[6] == '<b _ngcontent-c6="">REVICION</b>') {
+          $($(row).find('td')[6]).css('background-color', 'red');
+        } else {
+          $($(row).find('td')[6]).css('background-color', 'green');
+        }
+      },
     };
     this.cronDefService.getInscripcionActivo().subscribe(data => {
       this.dataIncripActivos = data.inscripcion;

@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
-import {EventService} from '../../services/event/event.service';
 //import { Options } from 'fullcalendar';
 import * as j from 'jquery';
 import 'jqueryui';

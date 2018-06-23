@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AclService } from 'ng2-acl/dist';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',

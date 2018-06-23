@@ -1,0 +1,127 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Welcome
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Welcome</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-5">
+        <div class="box box-info">
+          <div class="box-header">
+            <h3 class="box-title">Lista Usuarios</h3>
+            <!--
+                        <div class="box-tools pull-right">
+                          <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nuevo Usuario</a>
+                        </div>-->
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+              <thead>
+              <tr>
+                <th><b>N</b></th>
+                <th>
+                  <b>Estudiante</b>
+                </th>
+                <th>
+                  <b>Carrera</b>
+                </th>
+                <th><b>Acciones</b>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of dataEstudiante; let i= index">
+                <td><b>{{i+1}}</b></td>
+                <td><b>{{item.nombre}} {{item.apellidos}}</b></td>
+                <td><b>{{item.carrera}}</b></td>
+                <td>
+                  <button type="button" (click)="controlEstudiante(item)" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-xs-7">
+        <div class="box box-info">
+          <div class="box-header">
+            <h3 class="box-title">Lista Usuarios</h3>
+            <!--
+                        <div class="box-tools pull-right">
+                          <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nuevo Usuario</a>
+                        </div>-->
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th><b>N</b></th>
+                <!--<th>
+                  <b>Descargar</b>
+                </th>-->
+                <th>
+                  <b>Fecha Entrega</b>
+                </th>
+                <th>
+                  <b>Numero Inf.</b>
+                </th>
+                <th>
+                  <b>Descripcion</b>
+                </th>
+                <th>
+                  <b>Estudiante</b>
+                </th>
+                <!--<th>
+                  <b>Email</b>
+                </th>-->
+               <!-- <th>
+                  <b>Celular</b>
+                </th>-->
+                <th>
+                  <b>Estado</b>
+                </th>
+                <th><b>Acciones</b>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of data; let i= index">
+                <td><b>{{i+1}}</b></td>
+                <!--<td>-->
+                  <!--<a (click)="dowload(item.planilla.contenido)">Informe</a>-->
+                <!--</td>-->
+                <td><b>{{item.planilla.fechaEntrega}}</b></td>
+                <td><b>{{item.planilla.numero}}</b></td>
+                <td><b>{{item.descripcion}}</b></td>
+                <td><b>{{item.inscripcion.user.persona.nombre}} {{item.inscripcion.user.persona.apellidos}}</b></td>
+               <!-- <td><b>{{item.inscripcion.user.email}}</b></td>-->
+               <!-- <td><b>{{item.inscripcion.user.persona.celular}}</b></td>-->
+                <td><b>{{item.estado}}</b></td>
+                <td>
+                  <!--<button type="button" (click)="updateEstado(item)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>-->
+                  <button type="button" (click)="aprobado(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>

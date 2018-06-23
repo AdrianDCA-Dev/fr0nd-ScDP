@@ -27,6 +27,7 @@ import { AdminPlanillaControlTutorComponent } from './admin-planilla-control-tut
 import { AdminProyectosFinalesComponent } from './admin-proyectos-finales/admin-proyectos-finales.component';
 import {UICarouselModule} from 'ui-carousel';
 import { AdminTribunalNotasComponent } from './admin-tribunal-notas/admin-tribunal-notas.component';
+import { AdminEncargadoInformesComponent } from './admin-encargado-informes/admin-encargado-informes.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { AdminTribunalNotasComponent } from './admin-tribunal-notas/admin-tribun
     AdminPlanillaControlTutorComponent,
     AdminProyectosFinalesComponent,
     AdminTribunalNotasComponent,
+    AdminEncargadoInformesComponent,
   ],
   exports: [AdminComponent]
 })

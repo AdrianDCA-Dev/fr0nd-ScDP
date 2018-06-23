@@ -17,11 +17,11 @@ import {DefensaService} from './services/defensa/defensa.service';
 import {EvaluationService} from './services/evaluation/evaluation.service';
 import {TribunalService} from './services/tribunal/tribunal.service';
 import {AclService} from 'ng2-acl';
-import {EventService} from './services/event/event.service';
 import {CronogramaService} from './services/cronograma/cronograma.service';
 import {PlanillaControlService} from './services/planilla-control/planilla-control.service';
 import {PlanillaContTutorService} from './services/planilla-cont-tutor/planilla-cont-tutor.service';
 import {TribunalNotasService} from './services/tribunal-notas/tribunal-notas.service';
+import {EncargadoService} from './services/encargado/encargado.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import {TribunalNotasService} from './services/tribunal-notas/tribunal-notas.ser
   ],
   providers: [
     AuthGuard, UserService, ModuleService, InscriptionService, DefensaService, EvaluationService,
-    TribunalService, AclService, EventService, CronogramaService, PlanillaControlService,
-    PlanillaContTutorService, TribunalNotasService,
+    TribunalService, AclService, CronogramaService, PlanillaControlService,
+    PlanillaContTutorService, TribunalNotasService, EncargadoService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     {provide: ErrorHandler, useClass: AplicationErrorHandle }

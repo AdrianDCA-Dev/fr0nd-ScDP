@@ -71,6 +71,7 @@
                 <td><b>{{item.estado}}</b></td>
                  <td>
                    <button type="button" (click)="updateEstado(item)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
+<!--                   <button *ngIf="aclService.can('admin_encargado')" type="button" (click)="aprobado(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>-->
                  </td>
               </tr>
               </tbody>
