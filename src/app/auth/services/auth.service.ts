@@ -22,6 +22,7 @@ export class AuthService {
       .do(data => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', btoa(JSON.stringify(data.user)));
+        localStorage.setItem('roles', btoa(JSON.stringify(data.userRole)));
       });
   }
 
@@ -35,6 +36,10 @@ export class AuthService {
 
   getUser(): User {
     return localStorage.getItem('user') ? JSON.parse(atob(localStorage.getItem('user'))) : null;
+  }
+
+  getRol() {
+    return localStorage.getItem('roles') ? JSON.parse(atob(localStorage.getItem('roles'))) : null;
   }
 
   setUser(): Promise<boolean> {

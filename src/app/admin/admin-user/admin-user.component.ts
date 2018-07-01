@@ -3,6 +3,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {Subject} from 'rxjs/Subject';
 import swal from 'sweetalert2';
 import {UserService} from '../../services/user/user.service';
+import {FacultadCarreraService} from '../../services/facultad-carrera/facultad-carrera.service';
+import * as generator from 'generate-password';
 
 declare var $: any;
 declare var AdminLTE: any;
@@ -18,13 +20,17 @@ export class AdminUserComponent implements OnInit {
 
   public myForm: FormGroup;
   public editForm: FormGroup;
-
+  Cargandodatos = false;
   id: number;
   data: any[];
   model: any;
   dataRole: any[];
   role = [];
-  constructor(private userService: UserService, private fb: FormBuilder) { }
+  dataFacultad: any[];
+  dataCarrera: any[];
+  constructor(private userService: UserService,
+              private facultadCarreraService: FacultadCarreraService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
     AdminLTE.init();
@@ -43,6 +49,10 @@ export class AdminUserComponent implements OnInit {
       this.dataRole = data.role;
       console.log('roles', this.dataRole);
     });
+    this.facultadCarreraService.getFacultad().subscribe(data => {
+      this.dataFacultad = data.facultad;
+      console.log('facultad', this.dataFacultad);
+    });
     this.myForm = this.fb.group({
         id: [null, Validators.required],
         ci: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(7)]],
@@ -53,13 +63,14 @@ export class AdminUserComponent implements OnInit {
         direccion: [null, Validators.required],
         telefono: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(5)]],
         celular: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(5)]],
-        carrera: [null, [Validators.required, Validators.minLength(10)]],
+        carrera_id: [null, [Validators.required]],
         name: [null, [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
         email: [null, [Validators.required, Validators.maxLength(100), Validators.email]],
         password: [null, [Validators.required, Validators.maxLength(60), Validators.minLength(8)]],
         password_confirmation: [null, [Validators.required, Validators.maxLength(60), Validators.minLength(8)]],
         estado: [null, Validators.required],
         role: [null, Validators.required],
+        length: [null, Validators.required],
       });
     this.editForm = this.fb.group({
         id: [null, Validators.required],
@@ -71,7 +82,7 @@ export class AdminUserComponent implements OnInit {
         direccion: [null, Validators.required],
         telefono: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(5)]],
         celular: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(5)]],
-        carrera: [null, [Validators.required, Validators.minLength(10)]],
+        carrera_id: [null, [Validators.required]],
         name: [null, [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
         email: [null, [Validators.required, Validators.maxLength(100), Validators.email]],
         password: [null, [Validators.required, Validators.maxLength(60), Validators.minLength(8)]],
@@ -90,5 +101,31 @@ export class AdminUserComponent implements OnInit {
       swal('¡Buen trabajo!', '¡Hiciste clic en el botón!', 'success');
     });
     this.myForm.reset();
+  }
+
+  randomPassword(length: any) {
+    /*const chars = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890';*/
+    const chars = 'abcdefghijklmnopqrstuvwxyz@#-+<>ABCDEFGHIJKLMNOP1234567890';
+    let pass = '';
+    for (let x = 0; x < length; x++) {
+      const i = Math.floor(Math.random() * chars.length);
+      pass += chars.charAt(i);
+    }
+    return pass;
+  }
+
+  generar() {
+    const gen = this.randomPassword(10);
+    this.myForm.controls['password'].setValue(gen);
+    this.myForm.controls['password_confirmation'].setValue(gen);
+    console.log('password', this.randomPassword(10));
+  }
+  carrera(id: any) {
+    console.log('carrera_id', id.id);
+    this.facultadCarreraService.getCarrera(id.id).subscribe(data => {
+      this.dataCarrera = data.carrera;
+      this.Cargandodatos = false;
+      console.log('carrera', this.dataCarrera);
+    });
   }
 }

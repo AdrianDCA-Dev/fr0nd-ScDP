@@ -17,13 +17,13 @@ export class AdminLeftSideComponent implements OnInit {
 
   ngOnInit() {
     this.aclService.resume();
-    this.tribunales.getMostrarTribunales(this.auth.getUser().id).subscribe(data => {
+    /*this.tribunales.getMostrarTribunales(this.auth.getUser().id).subscribe(data => {
       this.data = data.tribunales;
     });
     this.tutor.getPlanTutor(this.auth.getUser().id).subscribe(data => {
       this.dataPlanTutor = data.tutor;
       console.log('tutor', this.dataPlanTutor);
-    });
+    });*/
   }
 
 }

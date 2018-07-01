@@ -56,7 +56,7 @@ export class AdminInscripcionTemaTutorComponent implements OnInit {
         id: [null, Validators.required],
         user_id_ins: [null, Validators.required],
         modalidad_id: [null, Validators.required],
-        fecha: [null, Validators.required],
+       /* fecha: [null, Validators.required],*/
         nombre: [null, [Validators.required, Validators.minLength(10)]],
         descripcion_ins: [null, Validators.required],
         user_id_tu: [null, Validators.required],
@@ -66,7 +66,7 @@ export class AdminInscripcionTemaTutorComponent implements OnInit {
         id: [null, Validators.required],
         user_id_ins: [null, Validators.required],
         modalidad_id: [null, Validators.required],
-        fecha: [null, Validators.required],
+       /* fecha: [null, Validators.required],*/
         nombre: [null, [Validators.required, Validators.minLength(10)]],
         descripcion_ins: [null, Validators.required],
         user_id_tu: [null, Validators.required],
@@ -108,7 +108,7 @@ export class AdminInscripcionTemaTutorComponent implements OnInit {
       console.log('formValue', formValue);
       this.data[index].user_id_ins = formValue.user_id_ins;
       this.data[index].modalidad_id = formValue.modalidad_id;
-      this.data[index].fecha = formValue.fecha;
+      this.data[index].fecha = data.fecha;
       this.data[index].nombre = formValue.nombre;
       this.data[index].descripcion_ins = formValue.descripcion_ins;
       this.data[index].user_id_tu = formValue.user_id_tu;

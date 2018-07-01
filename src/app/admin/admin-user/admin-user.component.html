@@ -2,12 +2,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Welcome
-      <small>Control panel</small>
+      Bienvenido
+      <small>Gestión Personal</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Welcome</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Gestión Personal</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -25,6 +25,7 @@
            <!-- /.box-header -->
            <div class="box-body table-responsive">
              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+
                <thead>
                  <tr>
                    <th><b>N</b></th>
@@ -77,7 +78,7 @@
                      <b>{{items.name}}</b>
                    </div>
                  </td>
-                 <td><b>{{item.persona.carrera}}</b></td>
+                 <td><b>{{item.persona.carrera.nombre}}</b></td>
                  <td><b>{{item.persona.direccion}}</b></td>
                  <td><b>{{item.persona.telefono}}</b></td>
                  <td><b>{{item.persona.celular}}</b></td>
@@ -182,13 +183,13 @@
                           <div class="form-check">
                             <input class="form-check-input" formControlName="sexo" name="sexo" type="radio" [value]="1" checked="checked"
                                    [class.form-control-danger]="myForm.controls['sexo'].invalid && myForm.controls['sexo'].touched" autofocus>
-                            <label class="form-check-label" for="radio100">Masculino</label>
+                            <label class="form-check-label">Masculino</label>
                           </div>
 
                           <div class="form-check">
                             <input class="form-check-input" formControlName="sexo" name="sexo" type="radio" [value]="0"
                                    [class.form-control-danger]="myForm.controls['sexo'].invalid && myForm.controls['sexo'].touched" autofocus>
-                            <label class="form-check-label" for="radio101">Femenino</label>
+                            <label class="form-check-label">Femenino</label>
                           </div>
                         </div>
                         <small class="form-text error" *ngIf="myForm.controls['sexo'].hasError('required') && (myForm.controls['sexo'].touched || myForm.controls['sexo'].dirty)">
@@ -223,15 +224,33 @@
                     </div>
 
                     <div class="row full-name-inputs">
-                      <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['carrera'].valid,
-                                          'has-error': myForm.controls['carrera'].invalid && (myForm.controls['carrera'].touched || myForm.controls['carrera'].dirty)}">
-                        <label>Carrera</label>
-                        <input type="text" formControlName="carrera" class="form-control" placeholder="Carrera Tutor"
-                               [class.form-control-danger]="myForm.controls['carrera'].invalid && myForm.controls['carrera'].touched" autofocus>
-                        <small class="form-text error" *ngIf="myForm.controls['carrera'].hasError('required') && (myForm.controls['carrera'].touched || myForm.controls['carrera'].dirty)">
+                      <div class="col-sm-12 form-group">
+                        <ng-select [items]="dataFacultad"
+                                   bindLabel="nombre"
+                                   bindValue="id"
+                                   placeholder="Seleccionar Facultad"
+                                   (add)="carrera($event)">
+                          <ng-template ng-option-tmp let-item="item">
+                            {{item.nombre}}
+                          </ng-template>
+                        </ng-select>
+                      </div>
+                      <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['carrera_id'].valid,
+                                      'has-error': myForm.controls['carrera_id'].invalid && (myForm.controls['carrera_id'].touched || myForm.controls['carrera_id'].dirty)}">
+                        <ng-select [items]="dataCarrera" [class.form-control-danger]="myForm.controls['carrera_id'].invalid && myForm.controls['carrera_id'].touched"
+                                   formControlName="carrera_id"
+                                   bindLabel="nombre"
+                                   bindValue="id"
+                                   [loading]="Cargandodatos"
+                                   placeholder="Seleccionar Carrera">
+                        </ng-select>
+                        <small class="form-text error" *ngIf="myForm.controls['carrera_id'].hasError('required') && (myForm.controls['carrera_id'].touched || myForm.controls['carrera_id'].dirty)">
                           Carrera es requerido!
                         </small>
                       </div>
+                    </div>
+
+                    <div class="row full-name-inputs">
                       <div class="col-sm-6 form-group" [ngClass]="{'has-success': myForm.controls['celular'].valid,
                                           'has-error': myForm.controls['celular'].invalid && (myForm.controls['celular'].touched || myForm.controls['celular'].dirty)}">
                         <label>Celular:</label>
@@ -294,10 +313,10 @@
                     </div>
 
                     <div class="row full-name-inputs">
-                      <div class="col-sm-6 form-group" [ngClass]="{'has-success': myForm.controls['password'].valid,
+                      <div class="col-sm-5 form-group" [ngClass]="{'has-success': myForm.controls['password'].valid,
                                           'has-error': myForm.controls['password'].invalid && (myForm.controls['password'].touched || myForm.controls['password'].dirty)}">
                         <label>Contraseña</label>
-                        <input type="password" formControlName="password" class="form-control" id="input-password" placeholder="Introduzca contraseña"
+                        <input type="text" formControlName="password" class="form-control" id="input-password" placeholder="Introduzca contraseña"
                                [class.form-control-danger]="myForm.controls['password'].invalid && myForm.controls['password'].touched" autofocus>
                         <small class="form-text error" *ngIf="myForm.controls['password'].hasError('required') && (myForm.controls['password'].touched || myForm.controls['password'].dirty)">
                           ¡Se requiere contraseña!
@@ -313,10 +332,10 @@
                           Contraseña no puede exceder 60 caracteres.
                         </small>
                       </div>
-                      <div class="col-sm-6 form-group" [ngClass]="{'has-success': myForm.controls['password_confirmation'].valid,
+                      <div class="col-sm-5 form-group" [ngClass]="{'has-success': myForm.controls['password_confirmation'].valid,
                                           'has-error': myForm.controls['password_confirmation'].invalid && (myForm.controls['password_confirmation'].touched || myForm.controls['password_confirmation'].dirty)}">
                         <label>Repite la contraseña</label>
-                        <input type="password" formControlName="password_confirmation" class="form-control" id="input-password_confirmation" placeholder="Confirmar contraseña"
+                        <input type="text" formControlName="password_confirmation" class="form-control" id="input-password_confirmation" placeholder="Confirmar contraseña"
                                [class.form-control-danger]="(myForm.controls['password_confirmation'].invalid || myForm.controls['password'].value != myForm.controls['password_confirmation'].value) && myForm.controls['password_confirmation'].touched">
                         <small class="form-text error" *ngIf="myForm.controls['password_confirmation'].hasError('required') && (myForm.controls['password_confirmation'].touched || myForm.controls['password_confirmation'].dirty)">
                           ¡Se requiere confirmación de contraseña!
@@ -326,6 +345,10 @@
                           *ngIf="myForm.controls['password_confirmation'].touched && myForm.controls['password'].value != myForm.controls['password_confirmation'].value && !myForm.controls['password_confirmation'].hasError('required')">
                           La contraseña no coincide con la contraseña de confirmación.'
                         </small>
+                      </div>
+                      <div class="col-sm-2 form-group text-center">
+                        <label>Generar</label>
+                        <button type="button" (click)="generar()" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></button>
                       </div>
                     </div>
                   </div>

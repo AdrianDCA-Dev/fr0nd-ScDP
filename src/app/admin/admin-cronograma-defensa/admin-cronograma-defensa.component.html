@@ -2,12 +2,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Welcome
-      <small>Control panel</small>
+      Bienvenido Gestión Defensas
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Welcome</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Defensas</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -19,7 +18,7 @@
             <h3 class="box-title">Lista Defensas</h3>
 
             <div class="box-tools pull-right">
-              <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nuevo Usuario</a>
+              <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nueva Defensa</a>
             </div>
           </div>
           <!-- /.box-header -->
@@ -80,7 +79,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Registrar Personal</h4>
+          <h4 class="modal-title">Nueva Defensa</h4>
         </div>
         <form [formGroup]="myForm" (submit)="post(myForm.value)" novalidate>
           <div class="modal-body">

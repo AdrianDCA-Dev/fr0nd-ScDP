@@ -22,6 +22,7 @@ import {PlanillaControlService} from './services/planilla-control/planilla-contr
 import {PlanillaContTutorService} from './services/planilla-cont-tutor/planilla-cont-tutor.service';
 import {TribunalNotasService} from './services/tribunal-notas/tribunal-notas.service';
 import {EncargadoService} from './services/encargado/encargado.service';
+import {FacultadCarreraService} from './services/facultad-carrera/facultad-carrera.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {EncargadoService} from './services/encargado/encargado.service';
   providers: [
     AuthGuard, UserService, ModuleService, InscriptionService, DefensaService, EvaluationService,
     TribunalService, AclService, CronogramaService, PlanillaControlService,
-    PlanillaContTutorService, TribunalNotasService, EncargadoService,
+    PlanillaContTutorService, TribunalNotasService, EncargadoService, FacultadCarreraService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     {provide: ErrorHandler, useClass: AplicationErrorHandle }

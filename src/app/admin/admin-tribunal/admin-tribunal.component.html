@@ -2,12 +2,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Welcome
-      <small>Lista Inscripciónes</small>
+      Bienvenido Gestionar Tribunal
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Welcome</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Tribunal</li>
     </ol>
   </section>
 
@@ -20,7 +19,7 @@
             <h3 class="box-title">Lista Inscripciónes</h3>
 
             <div class="box-tools pull-right">
-              <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nueva Inscripcion</a>
+              <a data-toggle="modal" data-toggle="modal" data-target="#modal-info" class="btn btn-block btn-primary btn-xs"><i class="fa fa-plus"></i> Nuevo Tribunal</a>
             </div>
           </div>
           <!-- /.box-header -->
@@ -82,7 +81,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Registrar Inscripción</h4>
+          <h4 class="modal-title">Nuevo Tribunal</h4>
         </div>
         <form [formGroup]="myForm" (submit)="agregar(myForm.value)" novalidate>
           <div class="modal-body">
