@@ -47,7 +47,9 @@
                 <th>
                   <b>Descripcion</b>
                 </th>
-                <th><b>Acciones</b>
+
+                <th>
+                  <b>Acciones</b>
                 </th>
               </tr>
               </thead>
@@ -55,7 +57,7 @@
               <tr *ngFor="let item of data; let i= index">
                 <td><b>{{i+1}}</b></td>
                 <td><b>{{item.defensa.inscripcion.user.persona.nombre}} {{item.defensa.inscripcion.user.persona.apellidos}}</b></td>
-                <td><b>{{item.defensa.inscripcion.user.persona.carrera}}</b></td>
+                <td><b>{{item.defensa.inscripcion.user.persona.carrera.nombre}}</b></td>
                 <td><b>{{item.updated_at}}</b></td>
                 <td><b>{{item.defensa.inscripcion.modalidad.nombre}}</b></td>
                 <td><b>{{item.user.persona.nombre}} {{item.user.persona.apellidos}}</b></td>

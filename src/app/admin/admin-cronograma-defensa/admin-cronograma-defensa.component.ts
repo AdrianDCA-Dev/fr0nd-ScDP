@@ -34,10 +34,11 @@ export class AdminCronogramaDefensaComponent implements OnInit {
       },
       rowCallback: function(row, data)
       {
-        if (data[6] == '<b _ngcontent-c6="">REVICION</b>') {
-          $($(row).find('td')[6]).css('background-color', 'red');
+        if (data[7] == '<b _ngcontent-c5="">REVISION</b>') {
+          $($(row).find('td')[7]).css('background-color', 'red');
         } else {
-          $($(row).find('td')[6]).css('background-color', 'green');
+          console.log('corlorr', data[7]);
+          $($(row).find('td')[7]).css('background-color', 'green');
         }
       },
     };
@@ -62,7 +63,6 @@ export class AdminCronogramaDefensaComponent implements OnInit {
       fechaDefModUno: [null, Validators.required],
       fechaDefModDos: [null, Validators.required],
       descripcion_cr: [null, Validators.required],
-      inscripcion_id: [null, Validators.required],
     });
   }
   post(model: any) {
@@ -73,5 +73,32 @@ export class AdminCronogramaDefensaComponent implements OnInit {
       swal('¡Buen trabajo!', '¡Hiciste clic en el botón!', 'success');
     });
     this.myForm.reset();
+  }
+  show(formData) {
+    console.log('que salio', formData.id);
+    this.id = formData.id;
+    this.editForm.controls['id'].setValue(formData.id);
+/*    this.editForm.controls['fechaDefModUno'].setValue(formData.cronograma.fechaDefModUno);
+    this.editForm.controls['fechaDefModDos'].setValue(formData.cronograma.fechaDefModDos);
+    this.editForm.controls['descripcion_cr'].setValue(formData.cronograma.descripcion);*/
+  }
+  edit(model: any) {
+    const formValue = this.editForm.getRawValue();
+    const index = this.data.findIndex( data => data.id == formValue.id);
+    this.model = model;
+    this.model.id = this.id;
+    this.cronDefService.putCronDef(this.model.id, this.model).subscribe( data => {
+      console.log(data);
+      console.log('formValue', formValue);
+      console.log('celdads', this.data[index]);
+      this.data[index].type = data.defensa.type;
+      this.data[index].cronograma.fechaDefModUno = data.defensa.cronograma.fechaDefModUno;
+      this.data[index].cronograma.fechaDefModDos = data.defensa.cronograma.fechaDefModDos;
+      this.data[index].cronograma.descripcion = data.defensa.cronograma.descripcion;
+     /* this.ngOnInit();*/
+      $('#modal-info').modal('hide');
+      swal('¡Buen trabajo!', '¡Hiciste clic en el botón!', 'success');
+    });
+    this.editForm.reset();
   }
 }

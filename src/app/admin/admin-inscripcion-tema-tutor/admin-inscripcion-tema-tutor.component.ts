@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import swal from 'sweetalert2';
 import { ModuleService } from '../../services/module/module.service';
 import {InscriptionService} from '../../services/inscription/inscription.service';
+import {ToastrService} from 'ngx-toastr';
 
 declare var $: any;
 declare var AdminLTE: any;
@@ -14,6 +15,7 @@ declare var AdminLTE: any;
   styleUrls: ['./admin-inscripcion-tema-tutor.component.css']
 })
 export class AdminInscripcionTemaTutorComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
@@ -26,7 +28,10 @@ export class AdminInscripcionTemaTutorComponent implements OnInit {
   dataModalidad: any[];
   dataDocente: any[];
   dataEstudiante: any[];
-  constructor(private inscripcionService: InscriptionService, private modalidadService: ModuleService, private fb: FormBuilder) { }
+  max = 0;
+  constructor(private inscripcionService: InscriptionService,
+              private toastr: ToastrService,
+              private modalidadService: ModuleService, private fb: FormBuilder) { }
 
   ngOnInit() {
     AdminLTE.init();
@@ -74,15 +79,34 @@ export class AdminInscripcionTemaTutorComponent implements OnInit {
     });
   }
   post(model: any) {
-    console.log('funciona', model);
-    this.inscripcionService.postInscripcion(model).subscribe(data => {
-      this.data.push(data.tutor);
-      console.log('postInscripcion', data.tutor);
-      $('#modal-info').modal('hide');
-      swal('¡Buen trabajo!', '¡Hiciste clic en el botón!', 'success');
-    });
-    this.myForm.reset();
+    console.log('funciona', this.max);
+
+    if (this.max != 4) {
+      this.inscripcionService.postInscripcion(model).subscribe(data => {
+        this.data.push(data.tutor);
+        console.log('postInscripcion', data.tutor);
+        $('#modal-info').modal('hide');
+        swal('¡Buen trabajo!', '¡Hiciste clic en el botón!', 'success');
+      });
+      this.myForm.reset();
+    } else {
+      this.toastr.error('El Tutor sobrepaso ALUMNOS!', 'ERROR..!');
+    }
   }
+  maximo(model: any) {
+    console.log('maximo', model);
+    this.max = 0;
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i].user_id == model.user_id) {
+          this.max = this.max + 1;
+      }
+      if (this.max == 4) {
+        this.toastr.error('El Tutor sobrepaso ALUMNOS!', 'ERROR..!');
+      }
+      console.log('prueba ', model.user_id);
+    }
+  }
+
   show(formData) {
     console.log('formData', formData);
     /*this.editForm.controls['id'].setValue(formData.persona.id);

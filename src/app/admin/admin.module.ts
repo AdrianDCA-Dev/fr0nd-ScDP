@@ -28,6 +28,12 @@ import { AdminProyectosFinalesComponent } from './admin-proyectos-finales/admin-
 import {UICarouselModule} from 'ui-carousel';
 import { AdminTribunalNotasComponent } from './admin-tribunal-notas/admin-tribunal-notas.component';
 import { AdminEncargadoInformesComponent } from './admin-encargado-informes/admin-encargado-informes.component';
+import {ToastrModule} from 'ngx-toastr';
+import { AdminReporteAvanceAcademicoComponent } from './admin-reporte-avance-academico/admin-reporte-avance-academico.component';
+import { AdminReporteCronogramaComponent } from './admin-reporte-cronograma/admin-reporte-cronograma.component';
+import { AdminReporteDefensaModalidadComponent } from './admin-reporte-defensa-modalidad/admin-reporte-defensa-modalidad.component';
+import {AmChartsModule} from '@amcharts/amcharts3-angular';
+import { AdminListEstudianteTutorComponent } from './admin-list-estudiante-tutor/admin-list-estudiante-tutor.component';
 
 @NgModule({
   imports: [
@@ -39,6 +45,8 @@ import { AdminEncargadoInformesComponent } from './admin-encargado-informes/admi
     FullCalendarModule,
     NgSelectModule,
     UICarouselModule,
+    ToastrModule,
+    AmChartsModule,
   ],
   declarations: [
     AdminComponent,
@@ -61,6 +69,10 @@ import { AdminEncargadoInformesComponent } from './admin-encargado-informes/admi
     AdminProyectosFinalesComponent,
     AdminTribunalNotasComponent,
     AdminEncargadoInformesComponent,
+    AdminReporteAvanceAcademicoComponent,
+    AdminReporteCronogramaComponent,
+    AdminReporteDefensaModalidadComponent,
+    AdminListEstudianteTutorComponent,
   ],
   exports: [AdminComponent]
 })

@@ -23,6 +23,10 @@ import {PlanillaContTutorService} from './services/planilla-cont-tutor/planilla-
 import {TribunalNotasService} from './services/tribunal-notas/tribunal-notas.service';
 import {EncargadoService} from './services/encargado/encargado.service';
 import {FacultadCarreraService} from './services/facultad-carrera/facultad-carrera.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {AmChartsService} from '@amcharts/amcharts3-angular';
+import {ReportesService} from './services/reportes/reportes.service';
 
 @NgModule({
   declarations: [
@@ -32,12 +36,15 @@ import {FacultadCarreraService} from './services/facultad-carrera/facultad-carre
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    AdminModule
+    AdminModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard, UserService, ModuleService, InscriptionService, DefensaService, EvaluationService,
     TribunalService, AclService, CronogramaService, PlanillaControlService,
     PlanillaContTutorService, TribunalNotasService, EncargadoService, FacultadCarreraService,
+    ToastrService, AmChartsService, ReportesService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     {provide: ErrorHandler, useClass: AplicationErrorHandle }

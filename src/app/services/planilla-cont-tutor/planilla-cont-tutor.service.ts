@@ -23,4 +23,8 @@ export class PlanillaContTutorService {
   putAprobadoTutor(id: any, data: any): Observable<any> {
     return this.http.put(`${environment.api_url}/aprobadouno/` + id, data);
   }
+
+  getTutorListaEstudiante(id: any): Observable<any> {
+    return this.http.get(`${environment.api_url}/listestudiante/` + id);
+  }
 }

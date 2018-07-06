@@ -34,15 +34,17 @@
                 <th>
                   <b>Carrera</b>
                 </th>
-                <th><b>Acciones</b>
+
+                <th ><b>Acciones</b>
                 </th>
+
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let item of dataEstudiante; let i= index">
                 <td><b>{{i+1}}</b></td>
-                <td><b>{{item.nombre}} {{item.apellidos}}</b></td>
-                <td><b>{{item.carrera}}</b></td>
+                <td><b>{{item.user.persona.nombre}} {{item.user.persona.apellidos}}</b></td>
+                <td><b>{{item.user.persona.carrera.nombre}}</b></td>
                 <td>
                   <button type="button" (click)="controlEstudiante(item)" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i></button>
                 </td>
@@ -93,7 +95,8 @@
                 <th>
                   <b>Estado</b>
                 </th>
-                <th><b>Acciones</b>
+                <th *ngIf="aclService.can('admin_encargado')">
+                  <b>Acciones</b>
                 </th>
               </tr>
               </thead>
@@ -110,9 +113,9 @@
                <!-- <td><b>{{item.inscripcion.user.email}}</b></td>-->
                <!-- <td><b>{{item.inscripcion.user.persona.celular}}</b></td>-->
                 <td><b>{{item.estado}}</b></td>
-                <td>
-                  <!--<button type="button" (click)="updateEstado(item)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>-->
-                  <button type="button" (click)="aprobado(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>                </td>
+                <td *ngIf="aclService.can('admin_encargado')">
+                  <button type="button" (click)="aprobado(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
+                </td>
               </tr>
               </tbody>
             </table>

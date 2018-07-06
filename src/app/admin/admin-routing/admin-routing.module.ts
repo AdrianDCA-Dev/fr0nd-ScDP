@@ -19,6 +19,10 @@ import {AdminProyectosFinalesComponent} from '../admin-proyectos-finales/admin-p
 import {AdminPlanillaControlTutorComponent} from '../admin-planilla-control-tutor/admin-planilla-control-tutor.component';
 import {AdminTribunalNotasComponent} from '../admin-tribunal-notas/admin-tribunal-notas.component';
 import {AdminEncargadoInformesComponent} from '../admin-encargado-informes/admin-encargado-informes.component';
+import {AdminReporteAvanceAcademicoComponent} from '../admin-reporte-avance-academico/admin-reporte-avance-academico.component';
+import {AdminReporteCronogramaComponent} from '../admin-reporte-cronograma/admin-reporte-cronograma.component';
+import {AdminReporteDefensaModalidadComponent} from '../admin-reporte-defensa-modalidad/admin-reporte-defensa-modalidad.component';
+import {AdminListEstudianteTutorComponent} from '../admin-list-estudiante-tutor/admin-list-estudiante-tutor.component';
 
 @NgModule({
   imports: [
@@ -46,6 +50,11 @@ import {AdminEncargadoInformesComponent} from '../admin-encargado-informes/admin
           { path: 'admin-planilla-control-tutor', component: AdminPlanillaControlTutorComponent},
           { path: 'admin-tribunal-notas', component: AdminTribunalNotasComponent},
           { path: 'admin-encargado-informes', component: AdminEncargadoInformesComponent},
+          { path: 'admin-encargado-notas', component: AdminTribunalNotasComponent},
+          { path: 'admin-reporte-avance-academico', component: AdminReporteAvanceAcademicoComponent},
+          { path: 'admin-reporte-cronograma', component: AdminReporteCronogramaComponent},
+          { path: 'admin-reporte-defensa-modalidad', component: AdminReporteDefensaModalidadComponent},
+          { path: 'admin-list-estudiante-tutor', component: AdminListEstudianteTutorComponent}
         ]
       }
     ])

@@ -51,7 +51,8 @@ export class AdminPlanillaControlTutorComponent implements OnInit {
       },*/
       rowCallback: function(row, data)
       {
-        if (data[8] == '<b _ngcontent-c6="">REVICION</b>') {
+        if (data[8] == '<b _ngcontent-c5="">REVISION</b>') {
+          console.log('prueba', data[8]);
           $($(row).find('td')[8]).css('background-color', 'red');
         } else {
           $($(row).find('td')[8]).css('background-color', 'green');

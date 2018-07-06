@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import {InscriptionService} from '../../services/inscription/inscription.service';
 import {PlanillaContTutorService} from '../../services/planilla-cont-tutor/planilla-cont-tutor.service';
 import {EncargadoService} from '../../services/encargado/encargado.service';
+import {AclService} from 'ng2-acl';
 
 declare var $: any;
 declare var AdminLTE: any;
@@ -26,27 +27,29 @@ export class AdminEncargadoInformesComponent implements OnInit {
   model: any;
   dataEstudiante: any[];
   constructor(private estudianteService: InscriptionService,
+              private aclService: AclService,
               private planContTutor: PlanillaContTutorService,
               private encargadoService: EncargadoService,
               private fb: FormBuilder) { }
 
   ngOnInit() {
     AdminLTE.init();
+    this.aclService.resume();
     this.dtOptions = {
       pagingType: 'full_numbers',
       language: {
         'url': '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json',
       },
     };
-    this.estudianteService.getEstudiante().subscribe(data => {
+    this.estudianteService.getInscrip().subscribe(data => {
       this.dataEstudiante = data.estudiante;
       this.dtTrigger.next();
-      console.log('estudiante', this.dataEstudiante);
+      console.log('estudiant', this.dataEstudiante);
     });
   }
   controlEstudiante(model: any) {
     console.log('model', model);
-    this.encargadoService.getEncargadoInforme(model.id).subscribe(data => {
+    this.encargadoService.getEncargadoInforme(model.user_id).subscribe(data => {
       this.data = data.control;
       console.log('control', this.data);
     });

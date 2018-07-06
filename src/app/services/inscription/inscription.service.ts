@@ -31,4 +31,9 @@ export class InscriptionService {
   getEstudiante(): Observable<any> {
     return this.http.get<string[]>(`${environment.api_url}/getestudiante`);
   }
+
+  getInscrip(): Observable<any> {
+    return this.http.get<string[]>(`${environment.api_url}/inscripto`);
+  }
+
 }

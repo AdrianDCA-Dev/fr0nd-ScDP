@@ -62,7 +62,7 @@
                <tr *ngFor="let item of data; let i= index">
                  <td><b>{{i+1}}</b></td>
                  <td><b>{{item.tema.inscripcion.user.persona.nombre}} {{item.tema.inscripcion.user.persona.apellidos}}</b></td>
-                 <td><b>{{item.tema.inscripcion.user.persona.carrera}}</b></td>
+                 <td><b>{{item.tema.inscripcion.user.persona.carrera.nombre}}</b></td>
                  <td><b>{{item.tema.inscripcion.fecha}}</b></td>
                  <td><b>{{item.tema.inscripcion.modalidad.nombre}}</b></td>
                  <td><b>{{item.tema.nombre}}</b></td>
@@ -173,6 +173,23 @@
               <div class="row full-name-inputs">
 
                 <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['user_id_tu'].valid,
+                                      'has-error': myForm.controls['user_id_tu'].invalid && (myForm.controls['user_id_tu'].touched || myForm.controls['user_id_tu'].dirty)}">
+                  <ng-select [items]="dataDocente" [class.form-control-danger]="myForm.controls['user_id_tu'].invalid && myForm.controls['user_id_tu'].touched"
+                             formControlName="user_id_tu"
+                             bindLabel="nombre"
+                             bindValue="user_id"
+                             (add)="maximo($event)">
+                             placeholder="Seleccionar Docente">
+                  </ng-select>
+                  <ng-template ng-option-tmp let-item="item">
+                    {{item.nombre}} {{item.apellidos}}
+                  </ng-template>
+                  <small class="form-text error" *ngIf="myForm.controls['user_id_tu'].hasError('required') && (myForm.controls['user_id_tu'].touched || myForm.controls['user_id_tu'].dirty)">
+                    Tutor es requerido!
+                  </small>
+                </div>
+
+               <!-- <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['user_id_tu'].valid,
                                           'has-error': myForm.controls['user_id_tu'].invalid && (myForm.controls['user_id_tu'].touched || myForm.controls['user_id_tu'].dirty)}">
                   <label>Seleccionar Tutor</label>
 
@@ -185,7 +202,7 @@
                   <small class="form-text error" *ngIf="myForm.controls['user_id_tu'].hasError('required') && (myForm.controls['user_id_tu'].touched || myForm.controls['user_id_tu'].dirty)">
                     Tutor es requerido!
                   </small>
-                </div>
+                </div>-->
 
               </div>
 
