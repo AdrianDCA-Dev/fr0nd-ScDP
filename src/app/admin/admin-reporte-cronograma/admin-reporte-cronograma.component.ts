@@ -37,7 +37,6 @@ export class AdminReporteCronogramaComponent implements OnInit, OnDestroy {
           'fillAlphas': 1,
           'lineAlpha': 1,
           'lineColor': '#fff',
-          'fillAlphas': 0.85,
           'balloonText': '<b>[[task]]</b>:<br />[[open]] -- [[value]]'
         },
         'rotate': true,
