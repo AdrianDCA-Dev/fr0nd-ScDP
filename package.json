@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-   /* "start": "ng serve",*/
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -84,8 +83,6 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-   /* "@angular/cli": "~1.7.4",
-    "@angular/compiler-cli": "^5.2.0",*/
     "@angular/language-service": "^5.2.0",
     "@types/datatables.net": "^1.10.10",
     "@types/datatables.net-buttons": "^1.4.0",
