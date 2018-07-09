@@ -12,11 +12,16 @@ import {PlanillaControlService} from '../../services/planilla-control/planilla-c
 export class AdminLeftSideComponent implements OnInit {
   data: any[];
   dataPlanTutor: any[];
+  dato: any;
+  acl: any;
   constructor(public auth: AuthService, private tribunales: TribunalService,
               private tutor: PlanillaControlService, private aclService: AclService) { }
 
   ngOnInit() {
     this.aclService.resume();
+    this.acl = this.aclService;
+    console.log('aclService', this.acl);
+    this.dato = this.auth.getUser();
     this.tribunales.getMostrarTribunales(this.auth.getUser().id).subscribe(data => {
       this.data = data.tribunales;
     });

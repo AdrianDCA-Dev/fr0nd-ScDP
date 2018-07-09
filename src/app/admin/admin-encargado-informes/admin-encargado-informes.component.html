@@ -95,7 +95,7 @@
                 <th>
                   <b>Estado</b>
                 </th>
-                <th *ngIf="aclService.can('admin_encargado')">
+                <th *ngIf="acl.can('admin_encargado')">
                   <b>Acciones</b>
                 </th>
               </tr>
@@ -113,7 +113,7 @@
                <!-- <td><b>{{item.inscripcion.user.email}}</b></td>-->
                <!-- <td><b>{{item.inscripcion.user.persona.celular}}</b></td>-->
                 <td><b>{{item.estado}}</b></td>
-                <td *ngIf="aclService.can('admin_encargado')">
+                <td *ngIf="acl.can('admin_encargado')">
                   <button type="button" (click)="aprobado(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
                 </td>
               </tr>

@@ -67,6 +67,7 @@
         "../node_modules/amcharts3/amcharts/plugins/export/export.min.js",
         "../node_modules/amcharts3/amcharts/serial.js",
         "../node_modules/amcharts3/amcharts/pie.js",
+        "../node_modules/amcharts3/amcharts/gantt.js",
         "../node_modules/amcharts3/amcharts/plugins/export/libs/fabric.js/fabric.js",
         "../node_modules/amcharts3/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js",
         "../node_modules/amcharts3/amcharts/plugins/export/libs/jszip/jszip.js",

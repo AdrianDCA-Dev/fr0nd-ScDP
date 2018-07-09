@@ -51,7 +51,7 @@
                 <th>
                   <b>NOTAS</b>
                 </th>
-                <th *ngIf="aclService.can('admin_encargado') || aclService.can('admin_tribunal')">
+                <th *ngIf="acl.can('admin_encargado') || acl.can('admin_tribunal')">
                   <b>Acciones</b>
                 </th>
               </tr>
@@ -66,7 +66,7 @@
                 <td><b>{{item.user.persona.nombre}} {{item.user.persona.apellidos}}</b></td>
                 <td><b>{{item.descripcion}}</b></td>
                 <td><b>{{item.nota}}</b></td>
-                <td *ngIf="aclService.can('admin_encargado') || aclService.can('admin_tribunal')">
+                <td *ngIf="acl.can('admin_encargado') || acl.can('admin_tribunal')">
                   <button type="button" (click)="show(item)" data-toggle="modal" data-target="#myModalEdit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                   <button type="button" (click)="editDos(item)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                 </td>

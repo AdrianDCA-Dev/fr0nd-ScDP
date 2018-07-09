@@ -26,6 +26,7 @@ export class AdminEncargadoInformesComponent implements OnInit {
   data: any[];
   model: any;
   dataEstudiante: any[];
+  acl: any;
   constructor(private estudianteService: InscriptionService,
               private aclService: AclService,
               private planContTutor: PlanillaContTutorService,
@@ -35,6 +36,7 @@ export class AdminEncargadoInformesComponent implements OnInit {
   ngOnInit() {
     AdminLTE.init();
     this.aclService.resume();
+    this.acl = this.aclService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       language: {

@@ -15,18 +15,32 @@
 
   <!-- Main content -->
   <section class="content">
-    <ui-carousel [infinite]="true" [fade]="true" [speed]="500" height="750px">
-      <ui-carousel-item>
-        <img src="assets/img/images1.jpg" alt="" draggable="false">
-      </ui-carousel-item>
-      <ui-carousel-item>
-        <img src="https://images2.alphacoders.com/913/913304.jpg" alt="" draggable="false">
-      </ui-carousel-item>
-      <ui-carousel-item>
-        <img src="http://www.qygjxz.com/data/out/123/5412675-imagens-hd.jpg" alt="" draggable="false">
-      </ui-carousel-item>
-    </ui-carousel>
-    <!-- /.row -->
+    <div>
+    <ngu-carousel
+      [inputs]="carouselOne"
+      (carouselLoad)="myfunc($event)">
+      <ngu-item NguCarouselItem class="bannerStyle" *ngFor="let Tile of carouselTileItems">
+        <img src="{{Tile}}" alt="" draggable="false">
+      </ngu-item>
+
+      <button NguCarouselPrev class='leftRs'>&lt;</button>
+      <button NguCarouselNext class='rightRs'>&gt;</button>
+    </ngu-carousel>
+    </div>
+    <br>
+    <br>
+    <div class="content">
+    <ngu-carousel
+      [inputs]="carouselTile">
+
+      <ngu-item NguCarouselItem *ngFor="let item of carouselTileItem">
+        <img src="{{item}}" alt="" draggable="false">
+      </ngu-item>
+
+      <button NguCarouselPrev class='leftRs'>&lt;</button>
+      <button NguCarouselNext class='rightRs'>&gt;</button>
+    </ngu-carousel>
+    </div>
   </section>
   <!-- /.content -->
 </div>

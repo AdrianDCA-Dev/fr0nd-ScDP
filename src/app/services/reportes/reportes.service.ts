@@ -8,7 +8,15 @@ export class ReportesService {
 
   constructor(private http: HttpClient) { }
 
-  getReporAA(): Observable<any> {
-    return this.http.get<string>(`${environment.api_url}/reporteaa`);
+  getInscripReport(): Observable<any> {
+    return this.http.get<string>(`${environment.api_url}/inscripreport`);
+  }
+
+  getReporAA(id: any): Observable<any> {
+    return this.http.get(`${environment.api_url}/reporteaa/` + id);
+  }
+
+  getReporCR(): Observable<any> {
+    return this.http.get(`${environment.api_url}/reportecr`);
   }
 }

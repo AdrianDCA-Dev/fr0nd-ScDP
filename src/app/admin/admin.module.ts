@@ -34,6 +34,7 @@ import { AdminReporteCronogramaComponent } from './admin-reporte-cronograma/admi
 import { AdminReporteDefensaModalidadComponent } from './admin-reporte-defensa-modalidad/admin-reporte-defensa-modalidad.component';
 import {AmChartsModule} from '@amcharts/amcharts3-angular';
 import { AdminListEstudianteTutorComponent } from './admin-list-estudiante-tutor/admin-list-estudiante-tutor.component';
+import {NguCarouselModule} from '@ngu/carousel';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { AdminListEstudianteTutorComponent } from './admin-list-estudiante-tutor
     UICarouselModule,
     ToastrModule,
     AmChartsModule,
+    NguCarouselModule,
   ],
   declarations: [
     AdminComponent,

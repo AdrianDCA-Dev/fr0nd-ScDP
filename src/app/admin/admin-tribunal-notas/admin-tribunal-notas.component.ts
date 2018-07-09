@@ -25,6 +25,7 @@ export class AdminTribunalNotasComponent implements OnInit {
   data: any[];
   model: any;
   mode: any = {};
+  acl: any;
   constructor(private tribunalNotasService: TribunalNotasService, private auth: AuthService,
               private aclService: AclService,
               private fb: FormBuilder) { }
@@ -32,6 +33,7 @@ export class AdminTribunalNotasComponent implements OnInit {
   ngOnInit() {
     AdminLTE.init();
     this.aclService.resume();
+    this.acl = this.aclService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       language: {

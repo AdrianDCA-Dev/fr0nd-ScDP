@@ -11,11 +11,13 @@ export class AdminHeaderComponent implements OnInit {
   roles: string;
   nombres: string;
   apellidos: string;
+  data: any;
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
     this.nombre = this.auth.getUser().name;
     this.roles = this.auth.getRol();
+    this.data = this.auth.getUser();
   }
 
   logout(e) {

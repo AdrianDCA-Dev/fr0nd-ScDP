@@ -7,11 +7,13 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from './../interfaces/user.model';
+import {AclService} from 'ng2-acl';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private aclService: AclService,
+              private router: Router) { }
 
   check(): boolean {
     return localStorage.getItem('user') ? true : false;
@@ -29,6 +31,11 @@ export class AuthService {
   logout(): void {
     this.http.get(`${environment.api_url}/auth/logout`).subscribe(resp => {
       console.log(resp);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('roles');
+      this.aclService.flushRoles();
+      localStorage.removeItem('AclService');
       localStorage.clear();
       this.router.navigate(['auth/login']);
     });
