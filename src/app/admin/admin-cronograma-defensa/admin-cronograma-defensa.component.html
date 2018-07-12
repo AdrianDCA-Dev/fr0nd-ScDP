@@ -34,10 +34,10 @@
                   <b>Modalidad</b>
                 </th>
                 <th>
-                  <b>Fecha Mod Uno</b>
+                  <b>Fecha Inicio</b>
                 </th>
                 <th>
-                  <b>Fecha Mod Dos</b>
+                  <b>Fecha Fin</b>
                 </th>
                 <th>
                   <b>Descripción</b>
@@ -64,7 +64,7 @@
                 <td><b>{{item.estado}}</b></td>
                 <td>
 <!--                  <button (click)="remove(item)" data-toggle="confirmation" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>-->
-                  <button type="button" (click)="show(item)" data-toggle="modal" data-target="#modal-info" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
+                  <button type="button" (click)="show(item)" data-toggle="modal" data-target="#modalEdit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                 </td>
               </tr>
               </tbody>
@@ -78,6 +78,81 @@
   </section>
   <!-- /.content -->
   <div class="modal modal-info fade" id="modal-info" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Registrar Defenza</h4>
+        </div>
+        <form [formGroup]="myForm" (submit)="post(myForm.value)" novalidate>
+          <div class="modal-body">
+            <div>
+              <div class="row full-name-inputs">
+                <div class="col-sm-6 form-group" [ngClass]="{'has-success': myForm.controls['fechaDefModUno'].valid,
+                                          'has-error': myForm.controls['fechaDefModUno'].invalid && (myForm.controls['fechaDefModUno'].touched || myForm.controls['fechaDefModUno'].dirty)}">
+                  <label>Fecha Inicio:</label>
+                  <input type="date" formControlName="fechaDefModUno" class="form-control" placeholder="Seleccione fecha modulo uno"
+                         [class.form-control-danger]="myForm.controls['fechaDefModUno'].invalid && myForm.controls['fechaDefModUno'].touched" autofocus>
+                  <small class="form-text error" *ngIf="myForm.controls['fechaDefModUno'].hasError('required') && (myForm.controls['fechaDefModUno'].touched || myForm.controls['fechaDefModUno'].dirty)">
+                    Fecha Inicio es Requerido!
+                  </small>
+                </div>
+
+                <div class="col-sm-6 form-group" [ngClass]="{'has-success': myForm.controls['fechaDefModDos'].valid,
+                                          'has-error': myForm.controls['fechaDefModDos'].invalid && (myForm.controls['fechaDefModDos'].touched || myForm.controls['fechaDefModDos'].dirty)}">
+                  <label>Fecha Fin:</label>
+                  <input type="date" formControlName="fechaDefModDos" class="form-control" placeholder="Seleccione fecha de nacimiento"
+                         [class.form-control-danger]="myForm.controls['fechaDefModDos'].invalid && myForm.controls['fechaDefModDos'].touched" autofocus>
+                  <small class="form-text error" *ngIf="myForm.controls['fechaDefModDos'].hasError('required') && (myForm.controls['fechaDefModDos'].touched || myForm.controls['fechaDefModDos'].dirty)">
+                    Fecha Fin es Requerido!
+                  </small>
+                </div>
+
+              </div>
+              <div class="row full-name-inputs">
+                <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['descripcion_cr'].valid,
+                                          'has-error': myForm.controls['descripcion_cr'].invalid && (myForm.controls['descripcion_cr'].touched || myForm.controls['descripcion_cr'].dirty)}">
+                  <label>Descripcióp:</label>
+                  <textarea type="text" formControlName="descripcion_cr" class="form-control" placeholder="Insertar Descripción"
+                            [class.form-control-danger]="myForm.controls['descripcion_cr'].invalid && myForm.controls['descripcion_cr'].touched" autofocus>
+
+                  </textarea>
+                  <small class="form-text error" *ngIf="myForm.controls['descripcion_cr'].hasError('required') && (myForm.controls['descripcion_cr'].touched || myForm.controls['descripcion_cr'].dirty)">
+                    Descripción es requerido!
+                  </small>
+                </div>
+
+                <div class="col-sm-12 form-group" [ngClass]="{'has-success': myForm.controls['inscripcion_id'].valid,
+                                          'has-error': myForm.controls['inscripcion_id'].invalid && (myForm.controls['inscripcion_id'].touched || myForm.controls['inscripcion_id'].dirty)}">
+                  <label>Seleccionar Inscrito:</label>
+                  <select class="form-control select2" formControlName="inscripcion_id" title="Seleccionar Inscrito"
+                          [class.form-control-danger]="myForm.controls['inscripcion_id'].invalid && myForm.controls['inscripcion_id'].touched" autofocus>
+                    <option *ngFor="let inscrito of dataIncripActivos" [value]="inscrito.id">
+                      {{inscrito.user.persona.nombre}} {{inscrito.user.persona.apellidos}}
+                    </option>
+                  </select>
+                  <small class="form-text error" *ngIf="myForm.controls['inscripcion_id'].hasError('required') && (myForm.controls['inscripcion_id'].touched || myForm.controls['inscripcion_id'].dirty)">
+                    Inscrito es requerido!
+                  </small>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>-->
+            <button type="submit" class="btn btn-outline">Guardar</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+  <div class="modal modal-info fade" id="modalEdit" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
