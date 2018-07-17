@@ -180,4 +180,32 @@ export class AdminUserComponent implements OnInit {
       console.log('carrera', this.dataCarrera);
     });
   }
+
+  remove(model: any) {
+    this.id = model.id;
+    const index = this.data.indexOf(model);
+    swal({
+      title: '¿Estás seguro?',
+      text: 'Una vez eliminada, ¡no podrá recuperar este archivo!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡bórralo!',
+    }).then((willDelete) => {
+      if (willDelete.value) {
+        this.userService.deleteUsers(this.id).subscribe(data => {
+          console.log(data);
+          if (index > -1) {
+            this.data.splice(index, 1);
+          }
+          swal(
+            'Poof!',
+            '¡Tu archivo ha sido eliminado!',
+            'success',
+          );
+        });
+      }
+    });
+  }
 }

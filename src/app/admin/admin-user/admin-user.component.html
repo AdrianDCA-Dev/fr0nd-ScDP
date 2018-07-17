@@ -85,7 +85,8 @@
                  <td><b>{{item.name}}</b></td>
                  <td><b>{{item.email}}</b></td>
                  <td>
-                  <button type="button" (click)="show(item)" data-toggle="modal" data-target="#myModalEdit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
+                   <button type="button" (click)="show(item)" data-toggle="modal" data-target="#myModalEdit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
+                   <button (click)="remove(item)" data-toggle="confirmation" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
                  </td>
                </tr>
                </tbody>

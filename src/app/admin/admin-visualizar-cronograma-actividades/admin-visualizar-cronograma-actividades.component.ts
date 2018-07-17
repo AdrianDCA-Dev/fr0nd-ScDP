@@ -35,11 +35,11 @@ export class AdminVisualizarCronogramaActividadesComponent implements OnInit {
           week : 'semana',
           day  : 'día',
         },
-        /*dayClick: function(date, jsEvent, view){
+        dayClick: function(date, jsEvent, view){
           Limpiar();
           j('#txtFecha').val(date.format());
           $('#modalEventos').modal('show');
-        },*/
+        },
         events: data.cronoAct,
         eventClick: function (calEvent, jsEvent, view) {
           console.log('llamando');
@@ -58,6 +58,13 @@ export class AdminVisualizarCronogramaActividadesComponent implements OnInit {
         }
       });
     });
+    function Limpiar() {
+      j('#txtId').val(' ');
+      j('#txtHora').val(' ');
+      j('#txtTitulo').val(' ');
+      j('#txtColor').val(' ');
+      j('#txtDescripcion').val(' ');
+    }
   }
 
 }
