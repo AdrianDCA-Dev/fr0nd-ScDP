@@ -81,73 +81,122 @@
   </div>
 </div>-->
   <header>
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="imgaa" src="../../../assets/img/logo_upds.jpg" alt="" draggable="false">
+      </div>
+      <div class="col-lg-6">
+        <img class="imgee" src="../../../assets/img/tituolo.jpg" alt="" draggable="false">
+      </div>
+    </div>
 
   </header>
-  <div class="login">
-    <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="errorCredentials">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      Usuario no valido.
-    </div>
-    <div class="photo">
-    </div>
-    <span>Inicia sesión</span>
-    <!--<form action="" id="login-form">-->
-    <form [formGroup]="f" novalidate>
+ <div class="row">
+   <div class="col-lg-2">
+   </div>
+   <div class="col-lg-5 ">
+     <div class="login">
+       <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="errorCredentials">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+         Usuario no valido.
+       </div>
+       <div class="photo">
+       </div>
+       <span>Inicia sesión</span>
+       <!--<form action="" id="login-form">-->
+       <form [formGroup]="f" novalidate>
 
-      <div class="form-group has-feedback" [ngClass]="{'has-success': f.controls['email'].valid,
+         <div class="form-group has-feedback" [ngClass]="{'has-success': f.controls['email'].valid,
                 'has-error': f.controls['email'].invalid && (f.controls['email'].touched || f.controls['email'].dirty)}">
-        <input type="email" formControlName="email" class="form-control" id="InputEmail" placeholder="Email">
-        <span *ngIf="f.controls['email'].valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-        <span *ngIf="f.controls['email'].invalid && (f.controls['email'].touched || f.controls['email'].dirty)">
+           <input type="email" formControlName="email" class="form-control" id="InputEmail" placeholder="Email">
+           <span *ngIf="f.controls['email'].valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+           <span *ngIf="f.controls['email'].invalid && (f.controls['email'].touched || f.controls['email'].dirty)">
                 <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 <span class="text-danger">E-mail inválido.</span>
               </span>
-      </div>
-      <div class="form-group has-feedback" [ngClass]="{'has-success': f.controls['role'].valid,
+         </div>
+         <div class="form-group has-feedback" [ngClass]="{'has-success': f.controls['role'].valid,
                 'has-error': f.controls['role'].invalid && (f.controls['role'].touched || f.controls['role'].dirty)}">
-        <select type="text" class="form-control" formControlName="role" title="Seleccionar Modalidad"
-                [class.form-control-danger]="f.controls['role'].invalid && f.controls['role'].touched">
-          <option *ngFor="let rol of dataRol" [value]="rol.id">
-            {{rol.name}}
-          </option>
-        </select>
-        <small class="form-text error" *ngIf="f.controls['role'].hasError('required') && (f.controls['role'].touched || f.controls['role'].dirty)">
-          Campo es obligatorio!
-        </small>
-      </div>
-      <div class="form-group" [ngClass]="{'has-success': f.controls['password'].valid,
+           <select type="text" class="form-control" formControlName="role" title="Seleccionar Modalidad"
+                   [class.form-control-danger]="f.controls['role'].invalid && f.controls['role'].touched">
+             <option *ngFor="let rol of dataRol" [value]="rol.id">
+               {{rol.name}}
+             </option>
+           </select>
+           <small class="form-text error" *ngIf="f.controls['role'].hasError('required') && (f.controls['role'].touched || f.controls['role'].dirty)">
+             Campo es obligatorio!
+           </small>
+         </div>
+         <div class="form-group" [ngClass]="{'has-success': f.controls['password'].valid,
                  'has-error': f.controls['password'].invalid && (f.controls['password'].touched || f.controls['password'].dirty)}">
-        <input type="password" formControlName="password" class="form-control" id="InputPassword" placeholder="Password">
-        <span class="text-danger" *ngIf="f.controls['password'].invalid && (f.controls['password'].touched || f.controls['password'].dirty)">Campo obligatorio.</span>
-      </div>
+           <input type="password" formControlName="password" class="form-control" id="InputPassword" placeholder="Password">
+           <span class="text-danger" *ngIf="f.controls['password'].invalid && (f.controls['password'].touched || f.controls['password'].dirty)">Campo obligatorio.</span>
+         </div>
 
-    <!--  <div id="u" class="form-group">
-        <input id="username" spellcheck=false class="form-control" name="username" type="text" size="18" alt="login" required="">
-        <span class="form-highlight"></span>
-        <span class="form-bar"></span>
-        <label for="username" class="float-label">Email</label>
+         <!--  <div id="u" class="form-group">
+             <input id="username" spellcheck=false class="form-control" name="username" type="text" size="18" alt="login" required="">
+             <span class="form-highlight"></span>
+             <span class="form-bar"></span>
+             <label for="username" class="float-label">Email</label>
 
-      </div>
-      <div id="p" class="form-group">
-        <input id="password" class="form-control" spellcheck=false name="password" type="password" size="18" alt="login" required="">
-        <span class="form-highlight"></span>
-        <span class="form-bar"></span>
-        <label for="password" class="float-label">Password</label>
+           </div>
+           <div id="p" class="form-group">
+             <input id="password" class="form-control" spellcheck=false name="password" type="password" size="18" alt="login" required="">
+             <span class="form-highlight"></span>
+             <span class="form-bar"></span>
+             <label for="password" class="float-label">Password</label>
 
-      </div>-->
+           </div>-->
 
-        <button type="submit" class="btn btn-default" [disabled]="f.invalid" (click)="onSubmit()">Iniciar session</button>
+         <button type="submit" class="btn btn-default" [disabled]="f.invalid" (click)="onSubmit()">Iniciar session</button>
 
-   <!-- </form>-->
-    </form>
-  </div>
+         <!-- </form>-->
+       </form>
+     </div>
+   </div>
+
+   <div class="col-lg-3 ">
+
+     <div class="content bajar">
+       <p></p>
+       <div class="text-center">
+         <h2 class="title text-center">MISIÓN</h2>
+         <small class="form-text sub-title"></small>
+         <br>
+       </div>
+       <div class="text-justify">
+         <p>
+           Somos una institución de educación superior con reconocimiento nacional y
+           relaciones internacionales, que genera cambio en las personas a través del
+           conocimiento e investigación, gestionado por talento humano comprometido con nuestro
+           proceso de enseñanza y aprendizaje de calidad, para desarrollar emprendedores
+           socialmente responsables.
+         </p>
+       </div>
+       <br>
+
+       <div class="text-center">
+         <h2 class="title text-center">VISIÓN</h2>
+         <small class="form-text sub-title"></small>
+         <br>
+       </div>
+       <div class="text-justify">
+         <p>
+           Ser la red nacional de educación superior más importante
+           de Bolivia con trascendencia internacional; aportando al desarrollo
+           integral del país mediante la formación académica de calidad y la investigación
+         </p>
+       </div>
+     </div>
+   </div>
+ </div>
+
   <p class="copyright">
-    <span>Diseñado por <a href="#">Diego Cardozo</a>
-      y Desarrollado por <a href="#" target="_blank">
+    <span>Desarrollado por <a href="#" target="_blank">
         Diego Cardozo</a> | <a href="#" target="_blank">
-        softdc@gmail.com</a>
+        softdc6@gmail.com</a>
     </span>
     <span>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</span> All rights reserved.
   </p>

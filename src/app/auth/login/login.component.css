@@ -38,7 +38,7 @@ header {
   width: 100%;
   height: 200px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
-  background: rgb(3, 169, 245);
+  background: rgb(0, 52, 128);
   font-size: 30px;
   font-weight: 300;
   color: rgb(242, 251, 253);
@@ -48,6 +48,7 @@ header {
 
 .login {
   position: relative;
+  left: 120px;
   padding: 10px;
   margin: 40px auto 80px auto;
   width: 400px;
@@ -385,4 +386,32 @@ footer a:focus {
   background: rgba(255, 255, 255, 0.3);
   pointer-events: none;
   border-radius: 100%;
+}
+img.imgaa {
+  position:absolute;
+  left:30%;
+  width: 200px;
+  height: 200px;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+img.imgee {
+  position: absolute;
+  right:20%;
+  padding-top: 100px;
+  text-align: center;
+}
+.vl {
+  border-left: 1px solid green;
+  height: 500px;
+  top: 0;
+}
+.bajar {
+  position: absolute;
+  padding-top: 100px;
+}
+hr.v{
+  width: 1px;
+  height: 500px;
 }
